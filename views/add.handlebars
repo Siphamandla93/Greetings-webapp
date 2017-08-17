@@ -1,0 +1,31 @@
+<div class="container-fluid">
+<h1>Add names</h1>
+
+<div class="form">
+<form method="post" >
+  <!-- action="/greetings" -->
+<input class="name" type="text" placeholder="Enter Name" name="name" value=""></input>
+<button class="btn btn-primary btn-sm" type="submit">GreetMe</button>
+<br>
+<br>
+<br>
+<div class="btn-group">
+  <label class="btn btn-secondary active">
+    <input type="radio" class="option1 btn-lg" name="language" value="Xhosa" > Xhosa
+    <label class="btn btn-secondary active">
+    <input type="radio" class="btn btn-primary btn-lg"  name="language" value="English" > English
+    <label class="btn btn-secondary active">
+    <input type="radio" class="btn btn-primary btn-lg"  name="language" value="Afrikaans" >Afrikaans
+</div>
+</form>
+</div>
+
+<p>{{language}} {{name}}</p>
+<p>{{counter}}</p>
+
+<!-- <ul>
+  {{#each Greeted}}
+  <li>{{this}}</li>
+  {{/each}}
+</ul> -->
+</div>
