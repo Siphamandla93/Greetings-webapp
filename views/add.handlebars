@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
 <h1>Add names</h1>
 
 <div class="form">
@@ -8,24 +8,19 @@
 <button class="btn btn-primary btn-sm" type="submit">GreetMe</button>
 <br>
 <br>
-<br>
 <div class="btn-group">
-  <label class="btn btn-secondary active">
-    <input type="radio" class="option1 btn-lg" name="language" value="Xhosa" > Xhosa
-    <label class="btn btn-secondary active">
-    <input type="radio" class="btn btn-primary btn-lg"  name="language" value="English" > English
-    <label class="btn btn-secondary active">
-    <input type="radio" class="btn btn-primary btn-lg"  name="language" value="Afrikaans" >Afrikaans
+  <label class="btn btn-success active">
+    <input type="radio" class="btn btn-primary" name="language" value="Xhosa" > Xhosa
+    <input type="radio" class="btn btn-primary"  name="language" value="English" > English
+    <input type="radio" class="btn btn-primary"  name="language" value="Afrikaans" >Afrikaans
+</label>
+    <!-- <a href="/greeted">View greeted people</a> -->
 </div>
+<a href="/greeted" class="btn-primary btn">View greeted people</a>
 </form>
 </div>
 
 <p>{{language}} {{name}}</p>
 <p>{{counter}}</p>
-
-<!-- <ul>
-  {{#each Greeted}}
-  <li>{{this}}</li>
-  {{/each}}
-</ul> -->
 </div>
+<!-- </div> -->

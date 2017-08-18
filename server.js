@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 // controller functions
 
 // handles the language selected from the radio buttons
-// returns the right language greeted in
+// returns the right language greet in
 function manageLanguage(lang) {
     if (lang === "Afrikaans") {
         return "Hallo, "
@@ -74,7 +74,7 @@ app.get('/greeted', function(req, res) {
 
 //creating a route that will count how many time aa person has been greeted
 app.get('/counter/:names', function(req, res) {
-    var names = req.body.names;
+    var names = req.params.names;
 
     function CounterNames(input) {
         return input == names;
