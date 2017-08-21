@@ -1,0 +1,31 @@
+.myButtons{
+  display: inline-block;
+}
+.grt{
+  color: black;
+  text-align: center;
+  font-size: 30px;
+}
+.form{
+  text-align: center;
+}
+h1{
+  text-align: center;
+  color: red;
+  font-size: 30px;
+}
+body{
+  background-color:lightblue;
+   border-style: solid;
+}
+.Buttons{
+font-size: 30px;
+}
+.name{
+  height: 24px;
+  width: 300px;
+}
+.names{
+  height: 24px;
+  width: 300px;
+}

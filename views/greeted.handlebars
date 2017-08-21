@@ -1,0 +1,12 @@
+<h1>Greetings Using Forms</h1>
+
+<p>
+  <a href="/greetings" class="btn-primary btn">Go to the form</a>
+</p>
+
+
+<ul>
+  {{#each Greeted}}
+  <a href="/counter/{{this}}"><li>{{this}}</li></a>
+  {{/each}}
+</ul>
