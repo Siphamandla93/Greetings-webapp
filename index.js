@@ -83,9 +83,15 @@ app.get('/counter/:names', function(req, res) {
     res.send("Hello, " + names + ' has been greeted ' + CounterNames + ' times(s)')
 });
 //start the server
-var server = app.listen(3000, function() {
-    var host = server.address().address;
-    var port = server.address().port;
+// var server = app.listen(3000, function() {
+//     var host = server.address().address;
+//     var port = server.address().port;
+//
+//     console.log('node server.js', host, port);
+// });
 
-    console.log('node server.js', host, port);
+app.set('port', (process.env.PORT || 5000));
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
