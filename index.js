@@ -79,8 +79,14 @@ app.get('/counter/:names', function(req, res) {
     function CounterNames(input) {
         return input == names;
     }
+
+
     var CounterNames = nameList.filter(CounterNames).length;
-    res.send("Hello, " + names + ' has been greeted ' + CounterNames + ' times(s)')
+    var name = "Hello, " + names + ' has been greeted ' + CounterNames + ' times(s)'
+    res.render("names", {
+      names:name
+    });
+
 });
 //start the server
 // var server = app.listen(3000, function() {
