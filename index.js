@@ -2,6 +2,12 @@ var express = require('express');
 var app = express();
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
+var Models = require('./models/User');
+var MongoUrl = process.env.MONGO_DB_URL || "'mongodb://localhost/Siphamandla'";
+var models = Models(MongoUrl);
+
+
+
 
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
@@ -13,6 +19,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
+
 
 // controller functions
 
@@ -54,13 +61,22 @@ app.get('/greetings', function(req, res) {
     res.render('add');
 });
 
-app.post("/greetings", function(req, res) {
-    var name = req.body.name;
+app.post("/greetings", function(req, res, next) {
+    var nameOf = {
+        name : req.body.name
+    }
     var language = req.body.language;
-
+models.User.create(nameOf, function(err, results){
+  if (err) {
+    return next(err)
+  }
+  else {
+    console.log(results.name);
+  }
+});
     //  console.log(name);
     res.render('add', {
-        name: manageName(name),
+        name: manageName(nameOf.name),
         language: manageLanguage(language),
         counter: counter
     });
