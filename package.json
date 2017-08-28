@@ -12,6 +12,9 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.11.9",
     "nodemon": "^1.11.0"
   },
   "devDependencies": {
