@@ -3,7 +3,7 @@ var app = express();
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var Models = require('./models/User');
-var MongoUrl = process.env.MONGO_DB_URL || "'mongodb://localhost/Siphamandla'";
+var MongoUrl = process.env.MONGO_DB_URL || 'mongodb://localhost/greet';
 var models = Models(MongoUrl);
 
 
@@ -67,6 +67,7 @@ app.post("/greetings", function(req, res, next) {
     }
     var language = req.body.language;
 models.User.create(nameOf, function(err, results){
+  console.log(results);
   if (err) {
     return next(err)
   }
