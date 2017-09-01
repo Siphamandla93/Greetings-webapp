@@ -7,6 +7,7 @@ mongoose.connect(MongoUrl);
     counter:Number
   });
 
+UserSchema.index({name:1}, {unique:true});
   var User = mongoose.model('User', UserSchema);
 
 return {User}

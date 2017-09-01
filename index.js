@@ -63,46 +63,86 @@ app.get('/greetings', function(req, res) {
 
 app.post("/greetings", function(req, res, next) {
     var nameOf = {
-        name : req.body.name
+        name : req.body.name,
+        counter:1
     }
     var language = req.body.language;
 models.User.create(nameOf, function(err, results){
-  console.log(results);
+  // console.log(results);
   if (err) {
-    return next(err)
+    if(err.code === 11000){
+    models.User.findOne({name: nameOf.name}, function(err, results){
+      if (results) {
+        results.counter = results.counter+1
+        results.save();
+        res.render('add', {
+          name: manageName(nameOf.name),
+          language: manageLanguage(language),
+          counter: results.length
+        });
+
+      }
+    })
   }
+}
   else {
-    console.log(results.name);
+    // console.log(results.name);
+    models.User.find({},function(err, results){
+      if (err){
+        return next(err)
+      }
+      else {
+        res.render('add', {
+          name: manageName(nameOf.name),
+          language: manageLanguage(language),
+          counter: results.length
+        });
+
+      }
+    })
   }
 });
     //  console.log(name);
-    res.render('add', {
-        name: manageName(nameOf.name),
-        language: manageLanguage(language),
-        counter: counter
-    });
 });
 
 app.get('/greeted', function(req, res) {
-    res.render("greeted", {
-        Greeted: nameList
-    });
+  models.User.find({},function(err, results){
+    if (err){
+      return next(err)
+    }
+    else {
+      res.render('greeted', {
+        Greeted: results
+      });
+
+    }
+  })
+    // res.render("greeted", {
+    //     Greeted: nameList
+    // });
 });
 
 //creating a route that will count how many time aa person has been greeted
-app.get('/counter/:names', function(req, res) {
+app.get('/counter/:names', function(req, res, next) {
     var names = req.params.names;
 
     function CounterNames(input) {
         return input == names;
     }
 
+models.User.findOne({name: names}, function(err, results){
+  if (err) {
+    return next(err)
+  }
+  else {
 
-    var CounterNames = nameList.filter(CounterNames).length;
-    var name = "Hello, " + names + ' has been greeted ' + CounterNames + ' times(s)'
+    // var CounterNames = nameList.filter(CounterNames).length;
+    var name = "Hello, " + req.params.names + ' has been greeted ' + results.counter + ' times(s)'
     res.render("names", {
       names:name
     });
+  }
+})
 
 });
 //start the server
@@ -113,7 +153,7 @@ app.get('/counter/:names', function(req, res) {
 //     console.log('node server.js', host, port);
 // });
 
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 8000));
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
