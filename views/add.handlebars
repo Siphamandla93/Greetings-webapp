@@ -19,6 +19,12 @@
 <a href="/greeted" class="btn-primary btn">View greeted people</a>
 </form>
 </div>
+<br>
+<p class="text-success">
+  {{#if messages.error}}
+  {{messages.error}}
+  {{/if}}
+</p>
 
 <p>{{language}} {{name}}</p>
 <p>{{counter}}</p>

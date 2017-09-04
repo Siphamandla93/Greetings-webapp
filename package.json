@@ -11,11 +11,17 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
+    "express-flash": "git://github.com/RGBboy/express-flash.git",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.5",
+    "install": "^0.10.1",
     "mongodb": "^2.2.31",
     "mongoose": "^4.11.9",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "npm": "^5.4.0",
+    "session": "^0.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
+var flash = require('express-flash');
+var session = require('express-session');
 var Models = require('./models/User');
 var MongoUrl = process.env.MONGO_DB_URL || 'mongodb://localhost/greet';
 var models = Models(MongoUrl);
@@ -13,6 +15,11 @@ app.engine('handlebars', exphbs({
     defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
+
+
+// app.use(express.cookieParser('keyboard cat'));
+  app.use(session({secret: "keyboard cat", cookie:{ maxAge: 60000 *30}}));
+  app.use(flash());
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({
@@ -49,6 +56,7 @@ function manageName(name) {
     } else {
       return name
     }
+
 }
 
 //create a route that will take different username
@@ -67,6 +75,10 @@ app.post("/greetings", function(req, res, next) {
         counter:1
     }
     var language = req.body.language;
+    if (!nameOf.name || language=== undefined){
+      req.flash('error', 'Please enter a name and choose language')
+      res.render('add');
+    } else{
 models.User.create(nameOf, function(err, results){
   // console.log(results);
   if (err) {
@@ -102,8 +114,9 @@ models.User.create(nameOf, function(err, results){
     })
   }
 });
-    //  console.log(name);
+}    //  console.log(name);
 });
+
 
 app.get('/greeted', function(req, res) {
   models.User.find({},function(err, results){
