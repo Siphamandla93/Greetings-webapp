@@ -1,32 +1,38 @@
+<br>
+<br>
+<div align="center">
                                                                                                                                                         <div class="container">
 <h1>Add names</h1>
 
-<div class="form">
-<form method="post" >
-  <!-- action="/greetings" -->
-<input class="name" type="text" placeholder="Enter Name" name="name" value=""></input>
-<button class="btn btn-primary btn-sm" type="submit">GreetMe</button>
-<br>
-<br>
-<div class="btn-group">
-  <label class="btn btn-success active">
-    <input type="radio" class="btn btn-primary" name="language" value="Xhosa" > Xhosa
-    <input type="radio" class="btn btn-primary"  name="language" value="English" > English
-    <input type="radio" class="btn btn-primary"  name="language" value="Afrikaans" >Afrikaans
-</label>
-    <!-- <a href="/greeted">View greeted people</a> -->
-</div>
-<a href="/greeted" class="btn-primary btn">View greeted people</a>
-</form>
-</div>
-<br>
-<p class="text-success">
-  {{#if messages.error}}
-  {{messages.error}}
-  {{/if}}
-</p>
+  <div class="form">
 
-<p>{{language}} {{name}}</p>
-<p>{{counter}}</p>
-</div>
-<!-- </div> -->
+    <form method="post" >
+      <!-- action="/greetings" -->
+    <input class="name" type="text" placeholder="Enter Name" name="name" value=""></input>
+    <button class="btn btn-primary btn-sm" type="submit">GreetMe</button>
+    <br>
+    <br>
+    <div class="btn-group">
+      <label class="btn btn-success active">
+        <input type="radio" class="btn btn-primary" name="language" value="Xhosa" > Xhosa
+        <input type="radio" class="btn btn-primary"  name="language" value="English" > English
+        <input type="radio" class="btn btn-primary"  name="language" value="Afrikaans" >Afrikaans
+    </label>
+        <!-- <a href="/greeted">View greeted people</a> -->
+
+    </div>
+    <a href="/greeted" class="btn-primary btn">View greeted people</a>
+    </form>
+    </div>
+    <br>
+    <p class="text-success">
+      {{#if messages.error}}
+      {{messages.error}}
+      {{/if}}
+    </p>
+
+    <p>{{language}} {{name}}</p>
+    <p>{{counter}}</p>
+    </div>
+  </div>
+    <!-- </div> -->
