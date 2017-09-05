@@ -72,6 +72,23 @@ app.post("/greetings", function(req, res, next) {
         name : req.body.name,
         counter:1
     }
+
+    app.get('/reset', function(req, res) {
+      models.User.remove({},function(err, results){
+        if (err){
+          return next(err)
+        }
+
+        else {
+          console.log(results.length);
+          req.flash('error', 'DataBase has been seccessfuly reseted thank you')
+          res.redirect('/greetings');
+        }
+      })
+
+    });
+
+
     var language = req.body.language;
     if (!nameOf.name || language=== undefined){
       req.flash('error', 'Please enter a name and choose language')
