@@ -9,8 +9,6 @@ var MongoUrl = process.env.MONGO_DB_URL || 'mongodb://localhost/greet';
 var models = Models(MongoUrl);
 
 
-
-
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
 }));
@@ -158,13 +156,7 @@ models.User.findOne({name: names}, function(err, results){
 })
 
 });
-//start the server
-// var server = app.listen(3000, function() {
-//     var host = server.address().address;
-//     var port = server.address().port;
-//
-//     console.log('node server.js', host, port);
-// });
+
 
 app.set('port', (process.env.PORT || 8000));
 
